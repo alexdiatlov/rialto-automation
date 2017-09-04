@@ -1,10 +1,11 @@
-package ua.com.rialtotenders.pageObject;
+package ua.com.rialtotenders.pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import ua.com.rialtotenders.pageObjects.BasePage;
 
 import java.util.List;
 
