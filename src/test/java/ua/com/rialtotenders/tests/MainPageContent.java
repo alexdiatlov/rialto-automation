@@ -9,6 +9,7 @@ public class MainPageContent extends BaseTest {
 
     private HeaderPage headerPage;
     private FooterPage footerPage;
+    private MainPage mainPage;
 
     @Before
     public void setUp() {
@@ -91,7 +92,83 @@ public class MainPageContent extends BaseTest {
 
         Assert.assertTrue("Header " + header2 + " is not matched", PlatformSPage.isTitleEqual4((header2)));
     }
+
+    @Test
+    public void openRegistBuyersButton (){
+
+        String header1 = "Постачальникам";
+        String header2 = "Замовникам";
+
+        mainPage = new MainPage(getDriver());
+        mainPage.clickBuersButton();
+
+        PlatformSPage platformSPage = new PlatformSPage(getDriver());
+        platformSPage.clickRegistBuyersButton();
+
+        Assert.assertTrue("Redirect URL is not correct",
+                getDriver().getCurrentUrl().equals("https://rialtotenders.com.ua/platforms"));
+
+        Assert.assertTrue("Header " + header1 + " is not matched", PlatformSPage.isTitleEqual3((header1)));
+
+        Assert.assertTrue("Header " + header2 + " is not matched", PlatformSPage.isTitleEqual4((header2)));
+    }
+
+    @Test
+    public void openRegistBiddersButton (){
+
+        String header1 = "Постачальникам";
+        String header2 = "Замовникам";
+
+        mainPage = new MainPage(getDriver());
+        mainPage.clickBiddersButton();
+
+        PlatformSPage platformSPage = new PlatformSPage(getDriver());
+        platformSPage.clickRegistBiddersButton();
+
+        Assert.assertTrue("Redirect URL is not correct",
+                getDriver().getCurrentUrl().equals("https://rialtotenders.com.ua/platforms"));
+
+        Assert.assertTrue("Header " + header1 + " is not matched", PlatformSPage.isTitleEqual3((header1)));
+
+        Assert.assertTrue("Header " + header2 + " is not matched", PlatformSPage.isTitleEqual4((header2)));
+    }
+
+    @Test
+    public void openBuyersPageTest (){
+        headerPage = new HeaderPage(getDriver());
+        headerPage.clickBuyers();
+
+        Assert.assertTrue("Redirect URL is not correct",
+                getDriver().getCurrentUrl().equals("https://rialtotenders.com.ua/buyers"));
+    }
+
+    @Test
+    public void openBiddersPageTest(){
+        headerPage = new HeaderPage(getDriver());
+        headerPage.clickBidders();
+
+        Assert.assertTrue("Redirect URL is not correct",
+                getDriver().getCurrentUrl().equals("https://rialtotenders.com.ua/bidders"));
+    }
+@Test
+    public void openPlatformPageTest(){
+
+        String header3 = "Приєднатись до системи";
+
+        headerPage = new HeaderPage(getDriver());
+        headerPage.clickPlatform();
+
+        Assert.assertTrue("Redirect URL is not correct",
+                getDriver().getCurrentUrl().equals("https://rialtotenders.com.ua/platform"));
+
+        PlatforMPage platforMPage = new PlatforMPage(getDriver());
+
+        Assert.assertTrue("Header " + header3 + " is not matched", PlatforMPage.isTitleEqual5((header3)));
+    }
 }
+
+
+
 
 
 

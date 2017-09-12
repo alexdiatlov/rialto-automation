@@ -5,13 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import ua.com.rialtotenders.pageObjects.BasePage;
 
 import java.util.List;
 
-/**
- * Created by Alexander.
- */
+
 public class AboutPage extends BasePage {
 
     @FindBy(className = "col-100")

@@ -8,24 +8,28 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
+public class PlatforMPage extends BasePage {
 
-public class ContactPage extends BasePage {
-
-    @FindBy(className = "col-100")
-    private WebElement rootElement;
-
-    public ContactPage(WebDriver driver) {
+    public PlatforMPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(getDriver(), this);
     }
 
-    public boolean isPhoneNumberExist(String phone) {
+    @FindBy(className = "c-text__center")
+    private static WebElement rootMaidanchiki;
+
+    @Deprecated
+    public String getTitle() {
+        return  rootMaidanchiki.findElement(By.tagName("h2")).getText();
+    }
+
+    public static boolean isTitleEqual5(String title) {
         boolean result = false;
-        List<WebElement> webElementList = rootElement.findElements(By.tagName("strong"));
+        List<WebElement> webElementList = rootMaidanchiki.findElements(By.tagName("h2"));
 
         for(int i = 0; i < webElementList.size(); i++) {
             String currentText = webElementList.get(i).getText();
-            if (currentText.contains(phone)) {
+            if (currentText.equals(title)) {
                 result = true;
                 break;
             }
@@ -33,4 +37,6 @@ public class ContactPage extends BasePage {
 
         return result;
     }
+
+
 }

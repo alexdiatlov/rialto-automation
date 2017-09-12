@@ -8,11 +8,11 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class PlatformSPage extends BasePage {
+public class BiddersPage extends BasePage {
 
-    public PlatformSPage(WebDriver driver){
-             super(driver);
-             PageFactory.initElements(getDriver(), this);
+    public BiddersPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(getDriver(), this);
     }
 
     @FindBy(className = "gpr")
@@ -59,19 +59,5 @@ public class PlatformSPage extends BasePage {
         }
 
         return result;
-    }
-
-    @FindBy(className = "sb-bigbutton--bg-color")
-    public WebElement registBuyersButton;
-
-    public void clickRegistBuyersButton() {
-        clickTo(registBuyersButton);
-    }
-
-    @FindBy(className = "sb-bigbutton--bg-color")
-    public WebElement registBiddersButton;
-
-    public void clickRegistBiddersButton() {
-        clickTo(registBiddersButton);
     }
 }

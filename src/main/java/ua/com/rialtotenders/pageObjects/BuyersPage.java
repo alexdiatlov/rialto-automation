@@ -8,12 +8,13 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class PlatformSPage extends BasePage {
+public class BuyersPage extends BasePage {
 
-    public PlatformSPage(WebDriver driver){
-             super(driver);
-             PageFactory.initElements(getDriver(), this);
+    public BuyersPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(getDriver(), this);
     }
+
 
     @FindBy(className = "gpr")
     private static WebElement Postach;
@@ -59,19 +60,5 @@ public class PlatformSPage extends BasePage {
         }
 
         return result;
-    }
-
-    @FindBy(className = "sb-bigbutton--bg-color")
-    public WebElement registBuyersButton;
-
-    public void clickRegistBuyersButton() {
-        clickTo(registBuyersButton);
-    }
-
-    @FindBy(className = "sb-bigbutton--bg-color")
-    public WebElement registBiddersButton;
-
-    public void clickRegistBiddersButton() {
-        clickTo(registBiddersButton);
     }
 }
