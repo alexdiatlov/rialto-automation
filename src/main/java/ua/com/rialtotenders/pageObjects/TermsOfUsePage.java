@@ -11,7 +11,7 @@ import java.util.List;
 public class TermsOfUsePage extends BasePage {
 
     @FindBy(className = ("col-100"))
-    private WebElement rootElement2;
+    private WebElement rootElement;
 
     public TermsOfUsePage(WebDriver driver) {
         super(driver);
@@ -20,21 +20,10 @@ public class TermsOfUsePage extends BasePage {
 
     @Deprecated
     public String getTitle() {
-        return  rootElement2.findElement(By.tagName("h2")).getText();
+        return  rootElement.findElement(By.tagName("h2")).getText();
     }
 
-    public boolean isTitleEqual2 (String title) {
-        boolean result = false;
-        List<WebElement> webElementList = rootElement2.findElements(By.tagName("h2"));
-
-        int x;
-        for (x = 0; x < webElementList.size(); x++) {
-            String currentText = webElementList.get(x).getText();
-            if (currentText.equals(title)) {
-                result = true;
-                break;
-            }
-        }
-        return result;
+    public boolean isTitleEqual(String title) {
+        return isTitleEqualFor(title,rootElement,"h2");
     }
 }

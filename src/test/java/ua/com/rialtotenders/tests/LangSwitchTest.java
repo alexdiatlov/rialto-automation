@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import ua.com.rialtotenders.pageObjects.HeaderPage;
 
-public class LangSwitchTest extends BaseTest {
+public class  LangSwitchTest extends BaseTest {
 
     private HeaderPage headerPage;
 

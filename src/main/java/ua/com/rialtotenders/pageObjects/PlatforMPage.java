@@ -16,14 +16,14 @@ public class PlatforMPage extends BasePage {
     }
 
     @FindBy(className = "c-text__center")
-    private static WebElement rootMaidanchiki;
+    private WebElement rootMaidanchiki;
 
     @Deprecated
     public String getTitle() {
         return  rootMaidanchiki.findElement(By.tagName("h2")).getText();
     }
 
-    public static boolean isTitleEqual5(String title) {
+    public boolean isTitleEqual5(String title) {
         boolean result = false;
         List<WebElement> webElementList = rootMaidanchiki.findElements(By.tagName("h2"));
 

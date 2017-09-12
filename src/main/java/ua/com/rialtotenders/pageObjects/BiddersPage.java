@@ -9,14 +9,16 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class BiddersPage extends BasePage {
+    @FindBy(className = "gpr")
+    //from small letter
+    private static WebElement Postach;
+    @FindBy(className = "gpl")
+    private static WebElement Zamovn;
 
     public BiddersPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(getDriver(), this);
     }
-
-    @FindBy(className = "gpr")
-    private static WebElement Postach;
 
     @Deprecated
     public String getTitlePostach(){
@@ -34,12 +36,9 @@ public class BiddersPage extends BasePage {
                 break;
             }
         }
-
         return result;
     }
 
-    @FindBy(className = "gpl")
-    private static WebElement Zamovn;
 
     @Deprecated
     public String getTitleZamovn(){
