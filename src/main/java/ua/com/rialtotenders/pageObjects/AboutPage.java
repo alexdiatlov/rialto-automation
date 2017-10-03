@@ -19,12 +19,6 @@ public class AboutPage extends BasePage {
         PageFactory.initElements(getDriver(), this);
     }// драйвер
 
-    //TODO DELETE IT
-    @Deprecated
-    public String getTitle() {
-        return  rootElement.findElement(By.tagName("h2")).getText();
-    }// знайшли від рут елемента те по чому буде проводитись перевірка
-
     public boolean isTitleEqual(String title) {
         boolean result = false;
         List<WebElement> webElementList = rootElement.findElements(By.tagName("h2"));

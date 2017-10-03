@@ -9,21 +9,18 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class BiddersPage extends BasePage {
+    @FindBy(className = "gpr")
+    //from small letter
+    private static WebElement Postach;
+    @FindBy(className = "gpl")
+    private static WebElement Zamovn;
 
     public BiddersPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(getDriver(), this);
     }
 
-    @FindBy(className = "gpr")
-    private static WebElement Postach;
-
-    @Deprecated
-    public String getTitlePostach(){
-        return Postach.findElement(By.tagName("h3")).getText();
-    }
-
-    public static boolean isTitleEqual3(String title){
+    public boolean isTitleEqual3(String title){
         boolean result = false;
         List<WebElement> webElementList = Postach.findElements(By.tagName("h3"));
 
@@ -34,19 +31,10 @@ public class BiddersPage extends BasePage {
                 break;
             }
         }
-
         return result;
     }
 
-    @FindBy(className = "gpl")
-    private static WebElement Zamovn;
-
-    @Deprecated
-    public String getTitleZamovn(){
-        return Zamovn.findElement(By.tagName("h3")).getText();
-    }
-
-    public static boolean isTitleEqual4(String title){
+    public boolean isTitleEqual4(String title){
         boolean result = false;
         List<WebElement> webElementList = Zamovn.findElements(By.tagName("h3"));
 

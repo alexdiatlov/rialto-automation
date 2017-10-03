@@ -3,13 +3,16 @@ package ua.com.rialtotenders.tests;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-    private static WebDriver driver;
+    public static WebDriver driver;
+    public Select select;
 
     @BeforeClass
 
@@ -19,11 +22,17 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-    @AfterClass
-
-    public static void afterClass (){
-        driver.quit();
+    //select method
+    public Select getSelect(WebElement element) {
+        select = new Select(element);
+        return select;
     }
+
+    //@AfterClass
+
+    //public static void afterClass (){
+        //driver.quit();
+    //}
 
     public static WebDriver getDriver(){
         return driver;

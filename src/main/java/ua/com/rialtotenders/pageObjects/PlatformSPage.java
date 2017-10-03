@@ -9,69 +9,40 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class PlatformSPage extends BasePage {
-
-    public PlatformSPage(WebDriver driver){
-             super(driver);
-             PageFactory.initElements(getDriver(), this);
-    }
-
     @FindBy(className = "gpr")
-    private static WebElement Postach;
-
-    @Deprecated
-    public String getTitlePostach(){
-        return Postach.findElement(By.tagName("h3")).getText();
-    }
-
-    public static boolean isTitleEqual3(String title){
-        boolean result = false;
-        List<WebElement> webElementList = Postach.findElements(By.tagName("h3"));
-
-        for(int i = 0; i < webElementList.size(); i++) {
-            String currentText = webElementList.get(i).getText();
-            if (currentText.equals(title)) {
-                result = true;
-                break;
-            }
-        }
-
-        return result;
-    }
+    private WebElement Postach;
 
     @FindBy(className = "gpl")
-    private static WebElement Zamovn;
-
-    @Deprecated
-    public String getTitleZamovn(){
-        return Zamovn.findElement(By.tagName("h3")).getText();
-    }
-
-    public static boolean isTitleEqual4(String title){
-        boolean result = false;
-        List<WebElement> webElementList = Zamovn.findElements(By.tagName("h3"));
-
-        for(int i = 0; i < webElementList.size(); i++) {
-            String currentText = webElementList.get(i).getText();
-            if (currentText.equals(title)) {
-                result = true;
-                break;
-            }
-        }
-
-        return result;
-    }
+    private WebElement Zamovn;
 
     @FindBy(className = "sb-bigbutton--bg-color")
     public WebElement registBuyersButton;
+
+
+    @FindBy(className = "sb-bigbutton--bg-color")
+    public WebElement registBiddersButton;
+
+
+    public PlatformSPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(getDriver(), this);
+    }
+
+    public boolean isPostachTitleEqual(String title) {
+        return isTitleEqualFor(title, Postach, "h3");
+    }
+
+    public boolean isZamovnTitleEqual(String title) {
+        return isTitleEqualFor(title, Zamovn, "h3");
+    }
 
     public void clickRegistBuyersButton() {
         clickTo(registBuyersButton);
     }
 
-    @FindBy(className = "sb-bigbutton--bg-color")
-    public WebElement registBiddersButton;
-
     public void clickRegistBiddersButton() {
         clickTo(registBiddersButton);
     }
+
+
 }
