@@ -67,6 +67,7 @@ public class BasePage {
         return result;
     }
 
+<<<<<<< HEAD
     //select method
     public Select getSelect(WebElement element) {
         select = new Select(element);
@@ -76,4 +77,6 @@ public class BasePage {
 
 
 
+=======
+>>>>>>> 49651ec2a2d60734f00c5be94245ab305a442559
 }
