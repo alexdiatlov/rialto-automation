@@ -20,16 +20,7 @@ public class BiddersPage extends BasePage {
         PageFactory.initElements(getDriver(), this);
     }
 
-<<<<<<< HEAD
-    public boolean isTitleEqual3(String title){
-=======
-    @Deprecated
-    public String getTitlePostach(){
-        return Postach.findElement(By.tagName("h3")).getText();
-    }
-
     public static boolean isTitleEqual3(String title){
->>>>>>> 49651ec2a2d60734f00c5be94245ab305a442559
         boolean result = false;
         List<WebElement> webElementList = Postach.findElements(By.tagName("h3"));
 
@@ -43,17 +34,7 @@ public class BiddersPage extends BasePage {
         return result;
     }
 
-<<<<<<< HEAD
-    public boolean isTitleEqual4(String title){
-=======
-
-    @Deprecated
-    public String getTitleZamovn(){
-        return Zamovn.findElement(By.tagName("h3")).getText();
-    }
-
     public static boolean isTitleEqual4(String title){
->>>>>>> 49651ec2a2d60734f00c5be94245ab305a442559
         boolean result = false;
         List<WebElement> webElementList = Zamovn.findElements(By.tagName("h3"));
 
