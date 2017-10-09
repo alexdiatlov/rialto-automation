@@ -46,8 +46,8 @@ public class SearchPage extends BasePage {
     @FindBy(id = ("filter-result"))
     private WebElement resultPlan;
 
-    //@FindBy(className = ("select-category"))
-    //private WebElement Category;
+    @FindBy(css = (".select-category > select"))
+    private Select category;
 
     @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[1]/label/p"))
     private WebElement activeEnquiriesCheckbox;
@@ -137,8 +137,9 @@ public class SearchPage extends BasePage {
 
     public void clickTenderTestBuyer(){clickTo(tenderTestBuyer);}
 
-    public boolean is_buyer_equal(String title){return isTitleEqualFor(title,buyersMatchElement)};
-
+ /*   public boolean is_buyer_equal(String title){return isTitleEqualFor(title,buyersMatchElement);
+    }
+*/
 
 
 
