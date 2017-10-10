@@ -1,5 +1,6 @@
 package ua.com.rialtotenders.pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,11 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class SearchPage extends BasePage {
-
-    public SearchPage (WebDriver driver){
-        super(driver);
-        PageFactory.initElements(driver, this);
-    }
 
     @FindBy(className = ("advanced_search"))
     private WebElement advanced_search;
@@ -47,9 +43,10 @@ public class SearchPage extends BasePage {
     private WebElement resultPlan;
 
     @FindBy(css = (".select-category > select"))
-    private Select category;
+    private WebElement categorySelectBox;
 
     @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[1]/label/p"))
+    //@FindBy(css = ("#statuses-filter > label > p"))
     private WebElement activeEnquiriesCheckbox;
 
     @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[2]/label/p"))
@@ -84,6 +81,14 @@ public class SearchPage extends BasePage {
 
     @FindBy(xpath = ("//*[@id='result']/div[2]/div/div[2]/p[1]/a"))
     private WebElement buyersMatchElement;
+
+    @FindBy(id = ("result"))
+    private WebElement resultTable;
+
+    public SearchPage (WebDriver driver){
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
 
     public void clickAdvancedSearch() {clickTo(advanced_search);}
 
@@ -137,7 +142,24 @@ public class SearchPage extends BasePage {
 
     public void clickTenderTestBuyer(){clickTo(tenderTestBuyer);}
 
- /*   public boolean is_buyer_equal(String title){return isTitleEqualFor(title,buyersMatchElement);
+    public Select getCategorySelectBox() {
+        return new Select(categorySelectBox);
+    }
+
+    private WebElement getNameTrendByOrderNumber(int orderNumber) {
+       return resultTable.findElements(By.className("sb-table-list-item__table"))
+               .get(orderNumber).findElements(By.className("sb-table-list-item__cell"))
+               //sorry for hardcode, not any uniqe locator here
+               .get(0).findElement(By.cssSelector("a"));
+    }
+
+
+    public void clickNameTrendByOrderNumber(int orderNumber) {
+        clickTo(getNameTrendByOrderNumber(orderNumber));
+    }
+
+
+    /*   public boolean is_buyer_equal(String title){return isTitleEqualFor(title,buyersMatchElement);
     }
 */
 
