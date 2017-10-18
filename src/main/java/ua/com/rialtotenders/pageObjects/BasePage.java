@@ -1,5 +1,6 @@
 package ua.com.rialtotenders.pageObjects;
 
+import com.sun.jna.platform.win32.OaIdl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +14,7 @@ import java.util.List;
 public class BasePage {
 
     private WebDriver driver;
-    private Select select;
+    //private Select select;
 
     public BasePage (WebDriver driver) {
         this.driver = driver;
@@ -26,6 +27,7 @@ public class BasePage {
     public void clickTo(WebElement element) {
         element.click();
     }
+
 
     // typing text in field
     public void fill(WebElement element, String text) {

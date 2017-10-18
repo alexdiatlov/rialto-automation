@@ -3,11 +3,13 @@ package ua.com.rialtotenders.tests;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import ua.com.rialtotenders.pageObjects.MainPage;
 import ua.com.rialtotenders.pageObjects.SearchPage;
 
 public class IDSearchTest extends BaseTest {
 
     private SearchPage searchPage;
+    private MainPage mainPage;
 
     @Before
     public void setUp() {
@@ -19,8 +21,8 @@ public class IDSearchTest extends BaseTest {
         String title = "Всього знайдено: 1";
         String header = "поставка партии миникомпьютеров на базе Gigabyte BRIX barebone GA-H110MSTX-HD3";
 
-        searchPage = new SearchPage(getDriver());
-        searchPage.clickTenderSearch();
+        mainPage = new MainPage(getDriver());
+        mainPage.clickTenderSearch();
 
         Assert.assertTrue("Redirect URL is not correct",
                 getDriver().getCurrentUrl().equals("https://rialtotenders.com.ua/tender/search?status=active.enquiries&status=active.tendering"));
@@ -45,8 +47,8 @@ public class IDSearchTest extends BaseTest {
         String title = "Всього знайдено: 1";
         String header = "дарожностроительни работа";
 
-        searchPage = new SearchPage(getDriver());
-        searchPage.clickPlanSearch();
+        mainPage = new MainPage(getDriver());
+        mainPage.clickPlanSearch();
 
         Assert.assertTrue("Redirect URL is not correct",
                 getDriver().getCurrentUrl().equals("https://rialtotenders.com.ua/plan/search"));

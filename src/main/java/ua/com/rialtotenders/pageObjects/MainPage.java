@@ -14,6 +14,15 @@ public class MainPage extends BasePage {
     @FindBy(className = "c-twoc__main-link")
     private WebElement buersButton;
 
+    @FindBy(className = ("advanced_search"))
+    private WebElement advanced_search;
+
+    @FindBy(css = ("[href='/plan/search']"))
+    private WebElement plan_search;
+
+    @FindBy(css = ("[href='/tender/search?status=active.enquiries&status=active.tendering']"))
+    private WebElement tender_search;
+
     public MainPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -24,6 +33,16 @@ public class MainPage extends BasePage {
     public void clickBuersButton(){
         clickTo(buersButton);
     }
+
+    public void clickAdvancedSearch() {
+        clickTo(advanced_search);
+    }
+
+    public void clickPlanSearch() {
+        clickTo(plan_search);
+    }
+
+    public void clickTenderSearch() { clickTo(tender_search); }
 
 }
 

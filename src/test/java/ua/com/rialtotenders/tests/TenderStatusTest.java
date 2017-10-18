@@ -3,11 +3,13 @@ package ua.com.rialtotenders.tests;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import ua.com.rialtotenders.pageObjects.MainPage;
 import ua.com.rialtotenders.pageObjects.SearchPage;
 
 public class TenderStatusTest extends BaseTest {
 
     private SearchPage searchPage;
+    private MainPage mainPage;
 
     @Before
     public void setUp() {
@@ -16,8 +18,8 @@ public class TenderStatusTest extends BaseTest {
 
     @Test
     public void tender_Status_active_enquiries_test() throws InterruptedException {
-        searchPage = new SearchPage(getDriver());
-        searchPage.clickTenderSearch();
+        mainPage = new MainPage(getDriver());
+        mainPage.clickTenderSearch();
 
         searchPage.clickClearFilter();
 
@@ -32,8 +34,8 @@ public class TenderStatusTest extends BaseTest {
 
     @Test
     public void tender_Status_active_tendering_test() throws InterruptedException {
-        searchPage = new SearchPage(getDriver());
-        searchPage.clickTenderSearch();
+        mainPage = new MainPage(getDriver());
+        mainPage.clickTenderSearch();
 
         searchPage.clickClearFilter();
 
@@ -48,8 +50,8 @@ public class TenderStatusTest extends BaseTest {
 
     @Test
     public void tender_Status_active_auction_test() throws InterruptedException {
-        searchPage = new SearchPage(getDriver());
-        searchPage.clickTenderSearch();
+        mainPage = new MainPage(getDriver());
+        mainPage.clickTenderSearch();
 
         searchPage.clickClearFilter();
 
@@ -64,8 +66,8 @@ public class TenderStatusTest extends BaseTest {
 
     @Test
     public void tender_Status_active_pre_qualification_test() throws InterruptedException {
-        searchPage = new SearchPage(getDriver());
-        searchPage.clickTenderSearch();
+        mainPage = new MainPage(getDriver());
+        mainPage.clickTenderSearch();
 
         searchPage.clickClearFilter();
 
@@ -80,8 +82,8 @@ public class TenderStatusTest extends BaseTest {
 
     @Test
     public void tender_Status_active_qualification_test() throws InterruptedException {
-        searchPage = new SearchPage(getDriver());
-        searchPage.clickTenderSearch();
+        mainPage = new MainPage(getDriver());
+        mainPage.clickTenderSearch();
 
         searchPage.clickClearFilter();
 
@@ -96,8 +98,8 @@ public class TenderStatusTest extends BaseTest {
 
     @Test
     public void tender_Status_active_awarded_test() throws InterruptedException {
-        searchPage = new SearchPage(getDriver());
-        searchPage.clickTenderSearch();
+        mainPage = new MainPage(getDriver());
+        mainPage.clickTenderSearch();
 
         searchPage.clickClearFilter();
 
@@ -112,8 +114,8 @@ public class TenderStatusTest extends BaseTest {
 
     @Test
     public void tender_Status_unsuccessful_test() throws InterruptedException {
-        searchPage = new SearchPage(getDriver());
-        searchPage.clickTenderSearch();
+        mainPage = new MainPage(getDriver());
+        mainPage.clickTenderSearch();
 
         searchPage.clickClearFilter();
 
@@ -128,8 +130,8 @@ public class TenderStatusTest extends BaseTest {
 
     @Test
     public void tender_Status_cancelled_test() throws InterruptedException {
-        searchPage = new SearchPage(getDriver());
-        searchPage.clickTenderSearch();
+        mainPage = new MainPage(getDriver());
+        mainPage.clickTenderSearch();
 
         searchPage.clickClearFilter();
 
@@ -144,8 +146,8 @@ public class TenderStatusTest extends BaseTest {
 
     @Test
     public void tender_Status_complete_test() throws InterruptedException {
-        searchPage = new SearchPage(getDriver());
-        searchPage.clickTenderSearch();
+        mainPage = new MainPage(getDriver());
+        mainPage.clickTenderSearch();
 
         searchPage.clickClearFilter();
 
