@@ -142,8 +142,10 @@ public class SearchPage extends BasePage {
 
     public void clickTenderTestBuyer(){clickTo(tenderTestBuyer);}
 
-    public Select getCategorySelectBox() {
-        return new Select(categorySelectBox);
+    public void selectCategoryByText(String category) {
+        Select categorySelect = new Select(categorySelectBox);
+        categorySelect.selectByVisibleText(category);
+        waitLoadingProcess();
     }
 
     private WebElement getNameTrendByOrderNumber(int orderNumber) {

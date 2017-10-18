@@ -28,8 +28,8 @@ public class CategorySearchTest extends BaseTest {
         searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
-        searchPage.getCategorySelectBox().selectByVisibleText("Все для офісу");
-        Thread.sleep(2000);
+        searchPage.selectCategoryByText("Все для офісу");
+        //Thread.sleep(2000);
         searchPage.clickNameTrendByOrderNumber(0);
 
        /* WebElement category = driver.findElement(By.cssSelector(".select-category > select"));
