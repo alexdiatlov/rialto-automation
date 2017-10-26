@@ -200,7 +200,7 @@ public class SearchPage extends BasePage {
 
     public void selectBuyersSearchFilter(String name) {
         List<WebElement> itemList = buyersSelectList.findElements(By.cssSelector(".buyers-item"));
-        //for(int i=0;i < itemList.size(); i++)
+        //for(int i=0;i < itemList.size(); i++){itemList.get(i)}
         for (WebElement el : itemList) {
             if (el.getText().equals(name)) {
                 el.click();
