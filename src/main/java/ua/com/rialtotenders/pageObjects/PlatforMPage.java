@@ -10,13 +10,13 @@ import java.util.List;
 
 public class PlatforMPage extends BasePage {
 
+    @FindBy(className = "c-text__center")
+    private WebElement rootMaidanchiki;
+
     public PlatforMPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(getDriver(), this);
     }
-
-    @FindBy(className = "c-text__center")
-    private WebElement rootMaidanchiki;
 
     public boolean isTitleEqual5(String title) {
         boolean result = false;
