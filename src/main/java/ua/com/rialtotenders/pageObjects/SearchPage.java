@@ -18,23 +18,26 @@ public class SearchPage extends BasePage {
     @FindBy(id = ("query"))
     private WebElement search_input_field;
 
-    @FindBy(id = ("result"))
-    private WebElement resultTender;
+    // ID Search
+    @FindBy(className = ("block-text-tender"))
+    private WebElement tenderHeader;
 
     @FindBy(css = ("[href='/tender/R-UA-2017-09-22-000012/']"))
     private WebElement searchTenderResult;
 
-    @FindBy(className = ("block-text-tender"))
-    private WebElement tenderHeader;
-
     @FindBy(css = ("[href='/plan/R-UA-P-2017-09-04-000001/']"))
     private WebElement  searchPlanResult;
 
-    @FindBy(id = ("filter-result"))
-    private WebElement resultPlan;
+    @FindBy(id = ("result"))
+    private WebElement resultFind_1;
 
+// category
     @FindBy(css = (".select-category > select"))
     private WebElement categorySelectBox;
+
+    @FindBy(id = ("result"))
+    private WebElement resultTable;
+
 //checkbox
     @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[1]/label/p"))
     //@FindBy(css = ("#statuses-filter > label > p"))
@@ -73,11 +76,9 @@ public class SearchPage extends BasePage {
     @FindBy(xpath = ("//*[@id='buyers-filter']/div[2]/div[1]/div/div/div/ul/div/li/span"))
     private WebElement planTestBuyer;
 
-    @FindBy(xpath = ("//*[@id='result']/div[2]/div/div[2]/p[1]/a"))
-    private WebElement buyersMatchElement;
+    /*@FindBy(xpath = ("//*[@id='result']/div[2]/div/div[2]/p[1]/a"))
+    private WebElement buyersMatchElement;*/
 
-    @FindBy(id = ("result"))
-    private WebElement resultTable;
 
     public SearchPage (WebDriver driver){
         super(driver);
@@ -87,13 +88,13 @@ public class SearchPage extends BasePage {
     public void clickClearFilter () {clickTo(clear_filter);}
 
     public void clickSearchButton () {clickTo(search_button);}
-
+// ID Search
     public void fillSearchInputFieldTenderID (){fill(search_input_field, "R-UA-2017-09-22-000012");}
 
     public void fillSearchInputFieldPlanID (){fill(search_input_field, "R-UA-P-2017-09-04-000001");}
 
-    public boolean isTitleEqual1(String title) {
-        return isTitleEqualFor(title,resultTender,"h3");
+    public boolean isTitleEqualResult_only_one(String title) {
+        return isTitleEqualFor(title,resultFind_1,"h3");
     }
 
     public void clickSearchTenderResult () {clickTo(searchTenderResult);}
@@ -102,9 +103,6 @@ public class SearchPage extends BasePage {
 
     public void clickSearchPlanResult(){clickTo(searchPlanResult);}
 
-    public boolean isTitleEqual3(String title) {
-        return isTitleEqualFor(title,resultTender,"h3");
-    }
 // checkbox
     public void clickActiveEnquiriesCheckbox(){clickTo(activeEnquiriesCheckbox);}
 
@@ -132,12 +130,18 @@ public class SearchPage extends BasePage {
 
     public void clickPlanTestBuyer(){clickTo(planTestBuyer);}
 
+// category search
     public void selectCategoryByText(String category) {
         Select categorySelect = new Select(categorySelectBox);
         categorySelect.selectByVisibleText(category);
         waitLoadingProcess();
     }
 
+    public Select getCategorySelectBox() {
+        return new Select(categorySelectBox);
+    }
+
+    // chose from result table
     private WebElement getNameTrendByOrderNumber(int orderNumber) {
        return resultTable.findElements(By.className("sb-table-list-item__table"))
                .get(orderNumber).findElements(By.className("sb-table-list-item__cell"))
@@ -148,10 +152,6 @@ public class SearchPage extends BasePage {
 
     public void clickNameTrendByOrderNumber(int orderNumber) {
         clickTo(getNameTrendByOrderNumber(orderNumber));
-    }
-
-    public Select getCategorySelectBox() {
-        return new Select(categorySelectBox);
     }
 
 

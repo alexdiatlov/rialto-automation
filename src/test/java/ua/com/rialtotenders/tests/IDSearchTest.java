@@ -24,45 +24,39 @@ public class IDSearchTest extends BaseTest {
         mainPage = new MainPage(getDriver());
         mainPage.clickTenderSearch();
 
-        Assert.assertTrue("Redirect URL is not correct",
-                getDriver().getCurrentUrl().equals("https://rialtotenders.com.ua/tender/search?status=active.enquiries&status=active.tendering"));
-
+        searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
         searchPage.fillSearchInputFieldTenderID();
 
         searchPage.clickSearchButton();
 
-        Assert.assertTrue("Title " + title + " is not matched", searchPage.isTitleEqual1((title)));
+        Assert.assertTrue("Title " + title + " is not matched", searchPage.isTitleEqualResult_only_one((title)));
 
-        searchPage = new SearchPage(getDriver());
         searchPage.clickSearchTenderResult();
 
         Assert.assertTrue("Header " + header + " is not matched", searchPage.isTitleEqual2((header)));
 
     }
 
-    /*@Test
-    public void search_plan_by_ID_Test(){
+    @Test
+    public void search_plan_by_ID_Test() {
         String title = "Всього знайдено: 1";
         String header = "дарожностроительни работа";
 
         mainPage = new MainPage(getDriver());
         mainPage.clickPlanSearch();
 
-        Assert.assertTrue("Redirect URL is not correct",
-                getDriver().getCurrentUrl().equals("https://rialtotenders.com.ua/plan/search"));
-
+        searchPage = new SearchPage(getDriver());
         searchPage.fillSearchInputFieldPlanID();
 
         searchPage.clickSearchButton();
 
-        Assert.assertTrue("Title " + title + " is not matched", searchPage.isTitleEqual3((title)));
+        Assert.assertTrue("Title " + title + " is not matched", searchPage.isTitleEqualResult_only_one((title)));
 
-        searchPage = new SearchPage(getDriver());
         searchPage.clickSearchPlanResult();
 
         Assert.assertTrue("Header " + header + " is not matched", searchPage.isTitleEqual2((header)));
-        }*/
+        }
 }
 
