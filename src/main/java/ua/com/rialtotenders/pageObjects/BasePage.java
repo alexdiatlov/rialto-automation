@@ -34,7 +34,7 @@ public class BasePage {
         element.sendKeys(text);
     }
 
-    //flexible method for waiting untill ekement will be visible
+    //flexible method for waiting until element will be visible
     public void waitUntilElementAppearVisible(WebElement webElement) {
         // @param timeOutInSeconds The timeout in seconds when an expectation is called
         // @param sleepInMillis The duration in milliseconds to sleep between polls.
@@ -42,7 +42,7 @@ public class BasePage {
                 //.ignoring(StaleElementReferenceException.class);
         driverWait.until(ExpectedConditions.visibilityOf(webElement));
     }
-
+// method for waiting until element will be clickable
     public void waitUntilElementClickable(WebElement webElement) {
         FluentWait<WebDriver> driverWait = new WebDriverWait(driver, 60, 500)
                 .ignoring(StaleElementReferenceException.class);
@@ -75,14 +75,14 @@ public class BasePage {
 
         return result;
     }
-
+// waiting until pre loader disappear
     public void waitLoadingProcess() {
         By by = By.id("overlay");
         if (isElementPresentNotWait(by)) {
            waitUntilElementDisappear(by);
         }
     }
-
+// work if there is no element? add description here
     private boolean isElementPresentNotWait(By by) {
         //TODO add method to BASETEST
         getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
