@@ -25,7 +25,7 @@ public class BuyersSearchTest extends BaseTest {
         searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
-        searchPage.fillBuyersSearchFilterInputField_Tender();
+        searchPage.fillBuyersSearchFilterInputField("Державне підприємство \"Укроборонсервіс\"");
 
         searchPage.clickTenderTestBuyer();
 
@@ -40,9 +40,11 @@ public class BuyersSearchTest extends BaseTest {
         mainPage.clickPlanSearch();
 
         searchPage = new SearchPage(getDriver());
-        searchPage.fillBuyersSearchFilterInputField_Plan();
 
-        searchPage.clickPlanTestBuyer();
+        searchPage.fillBuyersSearchFilterInputField("ТОВ \"ТАС ЛІНК\"");
+        searchPage.selectBuyersSearchFilter("ТОВ \"ТАС ЛІНК\"");
+
+       // searchPage.clickPlanTestBuyer();
 
         searchPage.clickNameTrendByOrderNumber(0);
 
