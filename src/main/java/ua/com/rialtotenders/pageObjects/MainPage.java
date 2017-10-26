@@ -10,7 +10,6 @@ public class MainPage extends BasePage {
     @FindBy(className = "left")
     private WebElement biddersButton;
 
-
     @FindBy(className = "c-twoc__main-link")
     private WebElement buersButton;
 
