@@ -103,8 +103,6 @@ public class SearchPage extends BasePage {
         return isTitleEqualFor(title,resultTender,"h3");
     }
 
-    //public void clickCategory (){clickTo(Category);}
-
     public void clickActiveEnquiriesCheckbox(){clickTo(activeEnquiriesCheckbox);}
 
     public void clickActiveTenderingCheckbox(){clickTo(activeTenderingCheckbox);}
