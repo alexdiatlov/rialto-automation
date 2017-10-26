@@ -35,7 +35,7 @@ public class SearchPage extends BasePage {
 
     @FindBy(css = (".select-category > select"))
     private WebElement categorySelectBox;
-
+//checkbox
     @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[1]/label/p"))
     //@FindBy(css = ("#statuses-filter > label > p"))
     private WebElement activeEnquiriesCheckbox;
@@ -63,12 +63,15 @@ public class SearchPage extends BasePage {
 
     @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[9]/label/p"))
     private WebElement completeCheckbox;
-
+//buyers
     @FindBy(xpath = ("//*[@id='buyers-filter']/div[2]/div[1]/div/input"))
     private WebElement buyersSearchFilterInputField;
 
     @FindBy(xpath = ("//*[@id='buyers-filter']/div[2]/div[1]/div/div/div/ul/div/li/span"))
     private WebElement tenderTestBuyer;
+
+    @FindBy(xpath = ("//*[@id='buyers-filter']/div[2]/div[1]/div/div/div/ul/div/li/span"))
+    private WebElement planTestBuyer;
 
     @FindBy(xpath = ("//*[@id='result']/div[2]/div/div[2]/p[1]/a"))
     private WebElement buyersMatchElement;
@@ -102,7 +105,7 @@ public class SearchPage extends BasePage {
     public boolean isTitleEqual3(String title) {
         return isTitleEqualFor(title,resultTender,"h3");
     }
-
+// checkbox
     public void clickActiveEnquiriesCheckbox(){clickTo(activeEnquiriesCheckbox);}
 
     public void clickActiveTenderingCheckbox(){clickTo(activeTenderingCheckbox);}
@@ -120,10 +123,14 @@ public class SearchPage extends BasePage {
     public void clickCancelledCheckbox(){clickTo(cancelledCheckbox);}
 
     public void clickCompleteCheckbox(){clickTo(completeCheckbox);}
-
-    public void fillBuyersSearchFilterInputField(){fill (buyersSearchFilterInputField, "Державне підприємство \"Укроборонсервіс\"");}
+//buyer
+    public void fillBuyersSearchFilterInputField_Tender(){fill (buyersSearchFilterInputField, "Державне підприємство \"Укроборонсервіс\"");}
 
     public void clickTenderTestBuyer(){clickTo(tenderTestBuyer);}
+
+    public void fillBuyersSearchFilterInputField_Plan(){fill (buyersSearchFilterInputField, "ТОВ \"ТАС ЛІНК\"");}
+
+    public void clickPlanTestBuyer(){clickTo(planTestBuyer);}
 
     public void selectCategoryByText(String category) {
         Select categorySelect = new Select(categorySelectBox);
@@ -143,20 +150,14 @@ public class SearchPage extends BasePage {
         clickTo(getNameTrendByOrderNumber(orderNumber));
     }
 
+    public Select getCategorySelectBox() {
+        return new Select(categorySelectBox);
+    }
+
 
     /*   public boolean is_buyer_equal(String title){return isTitleEqualFor(title,buyersMatchElement);
     }
 */
-
-
-
-
-
-
-
-
-
-
 }
 
 

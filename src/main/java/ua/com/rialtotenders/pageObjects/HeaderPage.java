@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class HeaderPage extends BasePage {
 
@@ -56,17 +57,18 @@ public class HeaderPage extends BasePage {
         clickTo(contacts);
     }
 
-    @FindBy(className = ("jsLangListItemActive"))
-    private WebElement lang;
+    @FindBy(css = (".sb-lang-selector > select"))
+    private WebElement languageSelectBox;
 
     public HeaderPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public void clickLang (){
-        clickTo(lang);
+    public void selectLanguageByText(String category) {
+        Select categorySelect = new Select(languageSelectBox);
+        categorySelect.selectByVisibleText(category);
+        waitLoadingProcess();
     }
-
 
 }

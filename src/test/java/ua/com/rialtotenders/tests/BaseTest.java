@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
     public static WebDriver driver;
-    private static ChromeOptions options;
+
 
     @BeforeClass
 
@@ -21,11 +21,7 @@ public class BaseTest {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 // do all tests in only one browser window
-
     }
     // close browser after test
     /*@AfterClass

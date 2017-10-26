@@ -25,7 +25,7 @@ public class BuyersSearchTest extends BaseTest {
         searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
-        searchPage.fillBuyersSearchFilterInputField();
+        searchPage.fillBuyersSearchFilterInputField_Tender();
 
         searchPage.clickTenderTestBuyer();
 
@@ -35,15 +35,15 @@ public class BuyersSearchTest extends BaseTest {
     }
 
     @Test
-    public void buyers_plan_search_test() throws InterruptedException {
+    public void buyers_plan_search_test() {
         mainPage = new MainPage(getDriver());
         mainPage.clickPlanSearch();
 
         searchPage = new SearchPage(getDriver());
-        searchPage.fill_plan_BuyersSearchFilterInputField();
+        searchPage.fillBuyersSearchFilterInputField_Plan();
 
         searchPage.clickPlanTestBuyer();
-Thread.sleep(2000);
+
         searchPage.clickNameTrendByOrderNumber(0);
 
         Assert.assertTrue("Buyer name is not matched",driver.findElement(By.className("sb-icon-and-text__item")).getText().contains("ТОВ \"ТАС ЛІНК\""));

@@ -13,4 +13,12 @@ public class  LangSwitchTest extends BaseTest {
     public void setUp() {
         getDriver().get("https://rialtotenders.com.ua");
     }
+
+@Test
+    public void change_lang_RUS_test (){
+        headerPage = new HeaderPage(getDriver());
+
+        headerPage.selectLanguageByText("Рус");
+
+}
 }
