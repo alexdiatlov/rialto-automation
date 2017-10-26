@@ -7,12 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HeaderPage extends BasePage {
 
-    public HeaderPage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-    }
-
-
     @FindBy(css = (".c-header__logo"))
     private WebElement logo;
 
@@ -64,6 +58,11 @@ public class HeaderPage extends BasePage {
 
     @FindBy(className = ("jsLangListItemActive"))
     private WebElement lang;
+
+    public HeaderPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
 
     public void clickLang (){
         clickTo(lang);
