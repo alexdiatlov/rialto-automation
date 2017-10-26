@@ -12,12 +12,12 @@ import java.util.List;
 public class AboutPage extends BasePage {
 
     @FindBy(className = "col-100")
-    private WebElement rootElement;// створили рут елемент
+    private WebElement rootElement;// create root element
 
     public AboutPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(getDriver(), this);
-    }// драйвер
+    }// driver
 
     public boolean isTitleEqual(String title) {
         boolean result = false;
