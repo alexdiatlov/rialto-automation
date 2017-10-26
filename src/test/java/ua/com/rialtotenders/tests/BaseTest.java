@@ -16,19 +16,20 @@ public class BaseTest {
     private static ChromeOptions options;
 
     @BeforeClass
+
     public static void beforeClassFather () {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        options = new ChromeOptions();
-        options.addArguments("start-maximized");
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-    }
+// do all tests in only one browser window
 
-    @AfterClass
-    public static void afterClass (){
-        driver.quit();
     }
+    // close browser after test
+    /*@AfterClass
+    public static void afterClass (){ driver.quit(); }*/
 
     public static WebDriver getDriver(){
         return driver;
