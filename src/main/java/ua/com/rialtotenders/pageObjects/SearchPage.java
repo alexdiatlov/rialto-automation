@@ -24,12 +24,6 @@ public class SearchPage extends BasePage {
     @FindBy(className = ("block-text-tender"))
     private WebElement tenderHeader;
 
-    @FindBy(css = ("[href='/tender/R-UA-2017-09-22-000012/']"))
-    private WebElement searchTenderResult;
-
-    @FindBy(css = ("[href='/plan/R-UA-P-2017-09-04-000001/']"))
-    private WebElement searchPlanResult;
-
     @FindBy(id = ("result"))
     private WebElement resultFind_1;
 
@@ -48,7 +42,7 @@ public class SearchPage extends BasePage {
     @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[2]/label/p"))
     private WebElement activeTenderingCheckbox;
 
-    @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[3]/label/p"))
+    @FindBy(css = (""))
     private WebElement activeAuctionCheckbox;
 
     @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[4]/label/p"))
@@ -66,8 +60,12 @@ public class SearchPage extends BasePage {
     @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[8]/label/p"))
     private WebElement cancelledCheckbox;
 
-    @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[9]/label/p"))
+    @FindBy(css = ("#statuses-filter .statuses-checkbox .statuses-complete > label > p"))
     private WebElement completeCheckbox;
+
+    @FindBy(css = "#statuses-filter .sb-f__checkbox-wrap")
+    private WebElement tenderStatusList;
+
     //buyers
     @FindBy(css = "#buyers-filter .sb-f__input-list-wrap")
     private WebElement buyersSelectList;
@@ -75,11 +73,12 @@ public class SearchPage extends BasePage {
     @FindBy(xpath = ("//*[@id='buyers-filter']/div[2]/div[1]/div/input"))
     private WebElement buyersSearchFilterInputField;
 
-    @FindBy(xpath = ("//*[@id='buyers-filter']/div[2]/div[1]/div/div/div/ul/div/li/span"))
-    private WebElement tenderTestBuyer;
+    //CPV search
+    @FindBy(xpath = ("//*[@id='categories-filter']/div[2]/div[1]/div/input"))
+    private WebElement cpv_search_field;
 
-    @FindBy(xpath = ("//*[@id='buyers-filter']/div[2]/div[1]/div/div/div/ul/div/li/span"))
-    private WebElement planTestBuyer;
+    @FindBy(css = "#categories-filter .sb-f__input-search-wrap")
+    private WebElement cpv_Select_List;
 
     /*@FindBy(xpath = ("//*[@id='result']/div[2]/div/div[2]/p[1]/a"))
     private WebElement buyersMatchElement;*/
@@ -99,29 +98,19 @@ public class SearchPage extends BasePage {
     }
 
     // ID Search
-    public void fillSearchInputFieldTenderID() {
-        fill(search_input_field, "R-UA-2017-09-22-000012");
-    }
 
-    public void fillSearchInputFieldPlanID() {
-        fill(search_input_field, "R-UA-P-2017-09-04-000001");
+    public void fill_Search_Input_Field(String text) {
+        fill(search_input_field, text);
     }
 
     public boolean isTitleEqualResult_only_one(String title) {
         return isTitleEqualFor(title, resultFind_1, "h3");
     }
 
-    public void clickSearchTenderResult() {
-        clickTo(searchTenderResult);
-    }
-
     public boolean isTitleEqual2(String header) {
         return isTitleEqualFor(header, tenderHeader, "h1");
     }
 
-    public void clickSearchPlanResult() {
-        clickTo(searchPlanResult);
-    }
 
     // checkbox
     public void clickActiveEnquiriesCheckbox() {
@@ -152,26 +141,41 @@ public class SearchPage extends BasePage {
         clickTo(unsuccessfulCheckbox);
     }
 
-    public void clickCancelledCheckbox() {
-        clickTo(cancelledCheckbox);
-    }
+    public void clickCancelledCheckbox() { clickTo(cancelledCheckbox); }
 
     public void clickCompleteCheckbox() {
         clickTo(completeCheckbox);
     }
 
-    //buyer
-    public void clickTenderTestBuyer() {
-        clickTo(tenderTestBuyer);
+    public void selectStatusCheckboxByText (String status) {
+        List<WebElement> checkboxList = tenderStatusList.findElements(By.cssSelector(".status"));
+        for (WebElement checkbox : checkboxList) {
+            if (checkbox.getText().equals(status)) {
+                checkbox.findElement(By.tagName("input")).click();
+                break;
+            }
+        }
     }
 
+
+    //buyer
     public void fillBuyersSearchFilterInputField(String text) {
         fill(buyersSearchFilterInputField, text);
     }
 
-    public void clickPlanTestBuyer() {
-        clickTo(planTestBuyer);
+    // choose result from buyers filter (plan working/ tender not)
+    public void selectBuyersSearchFilter(String name) {
+        List<WebElement> itemList = buyersSelectList.findElements(By.cssSelector(".buyers-item"));
+        //for(int i=0;i < itemList.size(); i++){itemList.get(i)}
+        for (WebElement el : itemList) {
+            if (el.getText().equals(name)) {
+                el.click();
+                break;
+
+            }
+        }
     }
+
 
     // category search
     public void selectCategoryByText(String category) {
@@ -182,6 +186,20 @@ public class SearchPage extends BasePage {
 
     public Select getCategorySelectBox() {
         return new Select(categorySelectBox);
+    }
+
+    //CPV search
+    public void fill_CPV_Search_Filter_Input_Field(String text){fill(cpv_search_field, text);}
+
+    public void select_CPV_Search_Filter(String name) {
+        List<WebElement> itemList = cpv_Select_List.findElements(By.cssSelector(".categories-item"));
+        //for(int i=0;i < itemList.size(); i++){itemList.get(i)}
+        for (WebElement el : itemList) {
+            if (el.getText().equals(name)) {
+                el.click();
+                break;
+            }
+        }
     }
 
     // chose from result table
@@ -198,16 +216,7 @@ public class SearchPage extends BasePage {
         clickTo(getNameTrendByOrderNumber(orderNumber));
     }
 
-    public void selectBuyersSearchFilter(String name) {
-        List<WebElement> itemList = buyersSelectList.findElements(By.cssSelector(".buyers-item"));
-        //for(int i=0;i < itemList.size(); i++){itemList.get(i)}
-        for (WebElement el : itemList) {
-            if (el.getText().equals(name)) {
-                el.click();
-                break;
-            }
-        }
-    }
+
 
 
     /*   public boolean is_buyer_equal(String title){return isTitleEqualFor(title,buyersMatchElement);

@@ -27,13 +27,13 @@ public class IDSearchTest extends BaseTest {
         searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
-        searchPage.fillSearchInputFieldTenderID();
+        searchPage.fill_Search_Input_Field("R-UA-2017-09-22-000012");
 
         searchPage.clickSearchButton();
 
         Assert.assertTrue("Title " + title + " is not matched", searchPage.isTitleEqualResult_only_one((title)));
 
-        searchPage.clickSearchTenderResult();
+        searchPage.clickNameTrendByOrderNumber(0);
 
         Assert.assertTrue("Header " + header + " is not matched", searchPage.isTitleEqual2((header)));
 
@@ -48,13 +48,13 @@ public class IDSearchTest extends BaseTest {
         mainPage.clickPlanSearch();
 
         searchPage = new SearchPage(getDriver());
-        searchPage.fillSearchInputFieldPlanID();
+        searchPage.fill_Search_Input_Field("R-UA-P-2017-09-04-000001");
 
         searchPage.clickSearchButton();
 
         Assert.assertTrue("Title " + title + " is not matched", searchPage.isTitleEqualResult_only_one((title)));
 
-        searchPage.clickSearchPlanResult();
+        searchPage.clickNameTrendByOrderNumber(0);
 
         Assert.assertTrue("Header " + header + " is not matched", searchPage.isTitleEqual2((header)));
         }

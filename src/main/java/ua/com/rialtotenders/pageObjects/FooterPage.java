@@ -16,6 +16,6 @@ public class FooterPage extends BasePage {
     }
 
 
-    public void clickregistFotter(){clickTo(registFotter);}
+    public void clickRegistFooter(){clickTo(registFotter);}
 
 }

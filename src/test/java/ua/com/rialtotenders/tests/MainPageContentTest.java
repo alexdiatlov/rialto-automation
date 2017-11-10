@@ -37,7 +37,7 @@ public class MainPageContentTest extends BaseTest {
         Assert.assertTrue("Redirect URL is not correct",
                 getDriver().getCurrentUrl().equals("https://rialtotenders.com.ua/about"));
 
-        ua.com.rialtotenders.pageObjects.AboutPage aboutPage = new ua.com.rialtotenders.pageObjects.AboutPage(getDriver());
+        AboutPage aboutPage = new AboutPage(getDriver());
         Assert.assertTrue("Header " + header + " is not matched", aboutPage.isTitleEqual(header));
     }
 
@@ -80,7 +80,7 @@ public class MainPageContentTest extends BaseTest {
         String header2 = "Замовникам";
 
         footerPage = new FooterPage(getDriver());
-        footerPage.clickregistFotter();
+        footerPage.clickRegistFooter();
 
         Assert.assertTrue("Redirect URL is not correct",
                 getDriver().getCurrentUrl().equals("https://rialtotenders.com.ua/platforms"));

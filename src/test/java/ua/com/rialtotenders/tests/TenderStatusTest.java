@@ -3,6 +3,7 @@ package ua.com.rialtotenders.tests;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import ua.com.rialtotenders.pageObjects.MainPage;
 import ua.com.rialtotenders.pageObjects.SearchPage;
 
@@ -21,11 +22,10 @@ public class TenderStatusTest extends BaseTest {
         mainPage = new MainPage(getDriver());
         mainPage.clickTenderSearch();
 
+        searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
-        Thread.sleep(10000);
-
-        searchPage = new SearchPage(getDriver());
+        Thread.sleep(2000);
         searchPage.clickActiveEnquiriesCheckbox();
 
         Assert.assertTrue("Redirect URL is not correct",
@@ -37,11 +37,10 @@ public class TenderStatusTest extends BaseTest {
         mainPage = new MainPage(getDriver());
         mainPage.clickTenderSearch();
 
+        searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
-        Thread.sleep(10000);
-
-        searchPage = new SearchPage(getDriver());
+        Thread.sleep(2000);
         searchPage.clickActiveTenderingCheckbox();
 
         Assert.assertTrue("Redirect URL is not correct",
@@ -52,12 +51,11 @@ public class TenderStatusTest extends BaseTest {
     public void tender_Status_active_auction_test() throws InterruptedException {
         mainPage = new MainPage(getDriver());
         mainPage.clickTenderSearch();
+        searchPage = new SearchPage(getDriver());
 
         searchPage.clickClearFilter();
 
-        Thread.sleep(10000);
-
-        searchPage = new SearchPage(getDriver());
+        Thread.sleep(2000);
         searchPage.clickActiveAuctionCheckbox();
 
         Assert.assertTrue("Redirect URL is not correct",
@@ -69,11 +67,10 @@ public class TenderStatusTest extends BaseTest {
         mainPage = new MainPage(getDriver());
         mainPage.clickTenderSearch();
 
+        searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
-        Thread.sleep(10000);
-
-        searchPage = new SearchPage(getDriver());
+        Thread.sleep(2000);
         searchPage.clickActivePreQualificationCheckbox();
 
         Assert.assertTrue("Redirect URL is not correct",
@@ -85,11 +82,10 @@ public class TenderStatusTest extends BaseTest {
         mainPage = new MainPage(getDriver());
         mainPage.clickTenderSearch();
 
+        searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
-        Thread.sleep(10000);
-
-        searchPage = new SearchPage(getDriver());
+        Thread.sleep(2000);
         searchPage.clickActiveQualificationCheckbox();
 
         Assert.assertTrue("Redirect URL is not correct",
@@ -101,11 +97,10 @@ public class TenderStatusTest extends BaseTest {
         mainPage = new MainPage(getDriver());
         mainPage.clickTenderSearch();
 
+        searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
-        Thread.sleep(10000);
-
-        searchPage = new SearchPage(getDriver());
+        Thread.sleep(2000);
         searchPage.clickActiveAwardedCheckbox();
 
         Assert.assertTrue("Redirect URL is not correct",
@@ -117,11 +112,10 @@ public class TenderStatusTest extends BaseTest {
         mainPage = new MainPage(getDriver());
         mainPage.clickTenderSearch();
 
+        searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
-        Thread.sleep(10000);
-
-        searchPage = new SearchPage(getDriver());
+        Thread.sleep(2000);
         searchPage.clickUnsuccessfulCheckbox();
 
         Assert.assertTrue("Redirect URL is not correct",
@@ -133,11 +127,10 @@ public class TenderStatusTest extends BaseTest {
         mainPage = new MainPage(getDriver());
         mainPage.clickTenderSearch();
 
+        searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
-        Thread.sleep(10000);
-
-        searchPage = new SearchPage(getDriver());
+        Thread.sleep(2000);
         searchPage.clickCancelledCheckbox();
 
         Assert.assertTrue("Redirect URL is not correct",
@@ -149,11 +142,10 @@ public class TenderStatusTest extends BaseTest {
         mainPage = new MainPage(getDriver());
         mainPage.clickTenderSearch();
 
+        searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
-        Thread.sleep(10000);
-
-        searchPage = new SearchPage(getDriver());
+        Thread.sleep(2000);
         searchPage.clickCompleteCheckbox();
 
         Assert.assertTrue("Redirect URL is not correct",

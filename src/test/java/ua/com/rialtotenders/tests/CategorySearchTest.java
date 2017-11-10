@@ -22,17 +22,14 @@ public class CategorySearchTest extends BaseTest {
     }
 
     @Test
-    public void office_category_test() throws InterruptedException {
+    public void office_category_test() {
         mainPage = new MainPage(getDriver());
-        //LandingPage landingPage= new LandingPage(getDriver());
-        //landingPage.clickTenderSearch();
         mainPage.clickTenderSearch();
 
         searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
         searchPage.selectCategoryByText("Все для офісу");
-        Thread.sleep(2000);
         searchPage.clickNameTrendByOrderNumber(0);
 
         Assert.assertTrue("CPV code is not correct", driver.findElement(By.cssSelector(".sb-table__text--small")).getText().contains("90919000-2"));
@@ -87,7 +84,7 @@ public class CategorySearchTest extends BaseTest {
     }
 
     @Test
-    public void agro_technic_tender_category_test() throws InterruptedException {
+    public void agro_technic_tender_category_test() {
         mainPage = new MainPage(getDriver());
         mainPage.clickTenderSearch();
 
@@ -95,7 +92,6 @@ public class CategorySearchTest extends BaseTest {
         searchPage.clickClearFilter();
 
         searchPage.getCategorySelectBox().selectByVisibleText("Сільськогосподарська техніка");
-        Thread.sleep(2000);
         searchPage.clickNameTrendByOrderNumber(0);
 
         Assert.assertTrue("CPV code is not correct", driver.findElement(By.cssSelector(".sb-table__text--small")).getText().contains("16700000-2"));

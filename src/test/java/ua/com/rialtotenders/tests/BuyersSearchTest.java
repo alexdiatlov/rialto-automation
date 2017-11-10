@@ -18,7 +18,7 @@ public class BuyersSearchTest extends BaseTest {
     }
 
     @Test
-    public void buyers_tender_search_test(){
+    public void buyers_tender_search_test() {
         mainPage = new MainPage(getDriver());
         mainPage.clickTenderSearch();
 
@@ -26,8 +26,9 @@ public class BuyersSearchTest extends BaseTest {
         searchPage.clickClearFilter();
 
         searchPage.fillBuyersSearchFilterInputField("Державне підприємство \"Укроборонсервіс\"");
+;
+        searchPage.selectBuyersSearchFilter("Державне підприємство \"Укроборонсервіс\"");
 
-        searchPage.clickTenderTestBuyer();
 
         searchPage.clickNameTrendByOrderNumber(0);
 
@@ -43,8 +44,6 @@ public class BuyersSearchTest extends BaseTest {
 
         searchPage.fillBuyersSearchFilterInputField("ТОВ \"ТАС ЛІНК\"");
         searchPage.selectBuyersSearchFilter("ТОВ \"ТАС ЛІНК\"");
-
-       // searchPage.clickPlanTestBuyer();
 
         searchPage.clickNameTrendByOrderNumber(0);
 
