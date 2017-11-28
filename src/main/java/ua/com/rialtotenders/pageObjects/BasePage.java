@@ -24,6 +24,8 @@ public class BasePage {
     public void clickTo(WebElement element){
         waitLoadingProcess();
         waitUntilElementAppearVisible(element);
+        scrollTo(element);
+        //waitUntilElementClickable(element); //maybe add it here
         element.click();
     }
 
@@ -32,6 +34,11 @@ public class BasePage {
         waitLoadingProcess();
         waitUntilElementAppearVisible(element);
         element.sendKeys(text);
+    }
+
+    private void scrollTo(WebElement element){
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", element);
     }
 
     //flexible method for waiting until element will be visible
@@ -63,6 +70,7 @@ public class BasePage {
 
     public boolean isTitleEqualFor(String title, WebElement element, String tagName) {
         boolean result = false;
+        waitLoadingProcess();
         List<WebElement> webElementList = element.findElements(By.tagName(tagName));
 
         for (int i = 0; i < webElementList.size(); i++) {

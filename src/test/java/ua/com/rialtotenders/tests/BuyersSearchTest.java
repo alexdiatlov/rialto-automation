@@ -26,9 +26,9 @@ public class BuyersSearchTest extends BaseTest {
         searchPage.clickClearFilter();
 
         searchPage.fillBuyersSearchFilterInputField("Державне підприємство \"Укроборонсервіс\"");
-;
-        searchPage.selectBuyersSearchFilter("Державне підприємство \"Укроборонсервіс\"");
 
+        searchPage.selectBuyersSearchFilter("Державне підприємство \"Укроборонсервіс\"");
+      //  searchPage.selectBuyersSearchFilter("ДЕРЖАВНЕ ПІДПРИЄМСТВО \"УКРОБОРОНСЕРВІС\"");
 
         searchPage.clickNameTrendByOrderNumber(0);
 

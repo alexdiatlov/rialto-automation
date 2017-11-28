@@ -168,10 +168,11 @@ public class SearchPage extends BasePage {
         List<WebElement> itemList = buyersSelectList.findElements(By.cssSelector(".buyers-item"));
         //for(int i=0;i < itemList.size(); i++){itemList.get(i)}
         for (WebElement el : itemList) {
+            //System.out.println(" --- " + el.getText().toLowerCase() + " " + name.toLowerCase());
             if (el.getText().equals(name)) {
+            ///if (el.getText().toLowerCase().equals(name.toLowerCase())) {
                 el.click();
                 break;
-
             }
         }
     }

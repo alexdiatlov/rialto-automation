@@ -13,7 +13,7 @@ public class Utils {
         System.out.println("Довжина масиву " + arrayLength + " елементів");
 
         for (int arr_element: agro_tech_cpv_arr){
-System.out.println(arr_element);
+            System.out.println(arr_element);
         }
     }
 
