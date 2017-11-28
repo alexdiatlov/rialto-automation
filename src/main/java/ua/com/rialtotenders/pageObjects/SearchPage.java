@@ -35,32 +35,32 @@ public class SearchPage extends BasePage {
     private WebElement resultTable;
 
     //checkbox
-    @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[1]/label/p"))
+    @FindBy(css = (".statuses-active-enquiries"))
     //@FindBy(css = ("#statuses-filter > label > p"))
     private WebElement activeEnquiriesCheckbox;
 
-    @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[2]/label/p"))
+    @FindBy(css = (".statuses-active-tendering"))
     private WebElement activeTenderingCheckbox;
 
-    @FindBy(css = (""))
-    private WebElement activeAuctionCheckbox;
-
-    @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[4]/label/p"))
+    @FindBy(css = (".statuses-active-pre-qualification"))
     private WebElement activePreQualificationCheckbox;
 
-    @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[5]/label/p"))
+    @FindBy(css = (".statuses-active-auction"))
+    private WebElement activeAuctionCheckbox;
+
+    @FindBy(css = (".statuses-active-qualification"))
     private WebElement activeQualificationCheckbox;
 
-    @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[6]/label/p"))
+    @FindBy(css = (".statuses-active-awarded"))
     private WebElement activeAwardedCheckbox;
 
-    @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[7]/label/p"))
+    @FindBy(css = (".statuses-unsuccessful"))
     private WebElement unsuccessfulCheckbox;
 
-    @FindBy(xpath = ("//*[@id='statuses-filter']/div[2]/div[2]/div/div[8]/label/p"))
+    @FindBy(css = (".statuses-cancelled"))
     private WebElement cancelledCheckbox;
 
-    @FindBy(css = ("#statuses-filter .statuses-checkbox .statuses-complete > label > p"))
+    @FindBy(css = (".statuses-complete"))
     private WebElement completeCheckbox;
 
     @FindBy(css = "#statuses-filter .sb-f__checkbox-wrap")
@@ -148,7 +148,7 @@ public class SearchPage extends BasePage {
     }
 
     public void selectStatusCheckboxByText (String status) {
-        List<WebElement> checkboxList = tenderStatusList.findElements(By.cssSelector(".status"));
+        List<WebElement> checkboxList = tenderStatusList.findElements(By.cssSelector("sb-f__checkbox-item-wrap"));
         for (WebElement checkbox : checkboxList) {
             if (checkbox.getText().equals(status)) {
                 checkbox.findElement(By.tagName("input")).click();
@@ -158,7 +158,7 @@ public class SearchPage extends BasePage {
     }
 
 
-    //buyer
+    //input buyer in buyer search field
     public void fillBuyersSearchFilterInputField(String text) {
         fill(buyersSearchFilterInputField, text);
     }
@@ -202,7 +202,7 @@ public class SearchPage extends BasePage {
         }
     }
 
-    // chose from result table
+    // chose from search result table
     private WebElement getNameTrendByOrderNumber(int orderNumber) {
         waitLoadingProcess();
         return resultTable.findElements(By.className("sb-table-list-item__table"))
@@ -211,10 +211,12 @@ public class SearchPage extends BasePage {
                 .get(0).findElement(By.cssSelector("a"));
     }
 
-
+// click on 'n' element in search result table
     public void clickNameTrendByOrderNumber(int orderNumber) {
         clickTo(getNameTrendByOrderNumber(orderNumber));
     }
+
+
 
 
 

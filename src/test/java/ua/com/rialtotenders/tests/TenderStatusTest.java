@@ -18,14 +18,13 @@ public class TenderStatusTest extends BaseTest {
     }
 
     @Test
-    public void tender_Status_active_enquiries_test() throws InterruptedException {
+    public void tender_Status_active_enquiries_test() {
         mainPage = new MainPage(getDriver());
         mainPage.clickTenderSearch();
 
         searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
-        Thread.sleep(2000);
         searchPage.clickActiveEnquiriesCheckbox();
 
         Assert.assertTrue("Redirect URL is not correct",
@@ -33,14 +32,13 @@ public class TenderStatusTest extends BaseTest {
     }
 
     @Test
-    public void tender_Status_active_tendering_test() throws InterruptedException {
+    public void tender_Status_active_tendering_test() {
         mainPage = new MainPage(getDriver());
         mainPage.clickTenderSearch();
 
         searchPage = new SearchPage(getDriver());
         searchPage.clickClearFilter();
 
-        Thread.sleep(2000);
         searchPage.clickActiveTenderingCheckbox();
 
         Assert.assertTrue("Redirect URL is not correct",
@@ -56,6 +54,7 @@ public class TenderStatusTest extends BaseTest {
         searchPage.clickClearFilter();
 
         Thread.sleep(2000);
+
         searchPage.clickActiveAuctionCheckbox();
 
         Assert.assertTrue("Redirect URL is not correct",
