@@ -4,9 +4,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import ua.com.rialtotenders.pageObjects.HeaderPage;
 import ua.com.rialtotenders.pageObjects.MainPage;
 import ua.com.rialtotenders.pageObjects.SearchPage;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class  LangSwitchTest extends BaseTest {
 
@@ -26,6 +31,20 @@ public class  LangSwitchTest extends BaseTest {
         headerPage.clickLangBox();
 
         headerPage.clickEng();
+
+        //move to PAGE -> getNavButtonTexts()
+    List<WebElement> navButtonsElm = driver.findElements(By.className("sb-nav__text"));
+    List<String> navButtonsTextActual = new ArrayList<String>();
+    for(WebElement element : navButtonsElm) {
+        navButtonsTextActual.add(element.getText());
+    }
+
+
+    List<String> navButtonsTextExpected = Arrays.asList("About", "Procuring entities",
+            "Economic operators", "ePlatforms", "Terms of use", "Contacts");
+
+    Assert.assertEquals("Navigation Text button is not equal", navButtonsTextExpected, navButtonsTextActual);
+
 
     Assert.assertTrue("About is not matched",
             driver.findElement(By.className("sb-nav__center")).getText().contains("About"));

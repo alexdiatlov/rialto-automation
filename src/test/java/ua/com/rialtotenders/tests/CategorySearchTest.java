@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import ua.com.rialtotenders.pageObjects.MainPage;
 import ua.com.rialtotenders.pageObjects.SearchPage;
+import ua.com.rialtotenders.pageObjects.TenderPage;
 
 import java.util.Locale;
 
@@ -15,6 +16,8 @@ public class CategorySearchTest extends BaseTest {
 
     private SearchPage searchPage;
     private MainPage mainPage;
+    private TenderPage tenderPage;
+    private String[] cpvCodesOffice = {"79000000-1","79000000-2","79000000-3","79000000-43","79000000-5"};
 
     @Before
     public void setUp() {
@@ -31,8 +34,8 @@ public class CategorySearchTest extends BaseTest {
 
         searchPage.selectCategoryByText("Все для офісу");
         searchPage.clickNameTrendByOrderNumber(0);
-
-        Assert.assertTrue("CPV code is not correct", driver.findElement(By.cssSelector(".sb-table__text--small")).getText().contains("90919000-2"));
+        tenderPage = new TenderPage(getDriver());
+        Assert.assertTrue("CPV code is not correct", tenderPage.isCPVCodeMatchWith(cpvCodesOffice) );
     }
 
        /* WebElement category = driver.findElement(By.cssSelector(".select-category > select"));
